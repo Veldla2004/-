@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>个人月度预算管理系统 3.0 正式版</title>
+  <title>个人月度预算管理系统 3.1 正式版</title>
   <style>
     :root{
       --bg:#000;
@@ -280,7 +280,7 @@
             </div>
             <div class="brand">
               <img id="avatarImg" class="avatar" alt="头像" />
-              <div class="brand-title">个人月度预算管理系统3.0 正式版</div>
+              <div class="brand-title">个人月度预算管理系统3.1正式版</div>
               <div class="brand-sub">预算 · 结余 · 汇率 · JSON备份 · 流水与提醒联动</div>
             </div>
             <div class="top-right top-actions">
@@ -353,7 +353,7 @@
             <div class="section-body">
               <div class="fx-card">
                 <div class="fx-topline"><strong>汇率表</strong><span class="mini">1 单位币种 = 多少 MYR</span></div>
-                <div class="table-wrap"><table style="min-width:920px;"><thead><tr><th style="min-width:120px;">币种</th><th style="min-width:220px;">兑换率（1 单位 = 多少 MYR）</th><th style="min-width:220px;">自动换算：100 单位</th><th style="min-width:220px;">备注</th></tr></thead><tbody><tr><td>MYR</td><td><input id="rate_MYR" type="number" min="0" step="0.0001" value="1"></td><td id="rate_auto_MYR" class="fx-result">MYR 100.00</td><td>本币 / 基准币种</td></tr><tr><td>SGD</td><td><input id="rate_SGD" type="number" min="0" step="0.0001" value="3.45"></td><td id="rate_auto_SGD" class="fx-result">MYR 345.00</td><td>可自行修改</td></tr><tr><td>USD</td><td><input id="rate_USD" type="number" min="0" step="0.0001" value="4.70"></td><td id="rate_auto_USD" class="fx-result">MYR 470.00</td><td>可自行修改</td></tr><tr><td>CNY</td><td><input id="rate_CNY" type="number" min="0" step="0.0001" value="0.65"></td><td id="rate_auto_CNY" class="fx-result">MYR 65.00</td><td>可自行修改</td></tr></tbody></table></div>
+                <div class="table-wrap"><table style="min-width:920px;"><thead><tr><th style="min-width:120px;">币种</th><th style="min-width:220px;">兑换率（1 单位 = 多少 MYR）</th><th style="min-width:220px;">自动换算：100 单位</th><th style="min-width:220px;">备注</th></tr></thead><tbody><tr><td>MYR</td><td><input id="rate_MYR" type="number" min="0" step="0.0001" value="1" disabled title="MYR 为基准币种，固定为 1"></td><td id="rate_auto_MYR" class="fx-result">MYR 100.00</td><td>本币 / 基准币种</td></tr><tr><td>SGD</td><td><input id="rate_SGD" type="number" min="0" step="0.0001" value="3.45"></td><td id="rate_auto_SGD" class="fx-result">MYR 345.00</td><td>可自行修改</td></tr><tr><td>USD</td><td><input id="rate_USD" type="number" min="0" step="0.0001" value="4.70"></td><td id="rate_auto_USD" class="fx-result">MYR 470.00</td><td>可自行修改</td></tr><tr><td>CNY</td><td><input id="rate_CNY" type="number" min="0" step="0.0001" value="0.65"></td><td id="rate_auto_CNY" class="fx-result">MYR 65.00</td><td>可自行修改</td></tr></tbody></table></div>
                 <div class="fx-card" style="margin-top:14px;">
                   <div class="fx-topline" style="margin-bottom:12px;"><strong>快速换算</strong><span class="mini">输入后会自动显示结果</span></div>
                   <div class="income-grid" style="grid-template-columns:1fr 1fr 1fr 1fr;">
@@ -502,6 +502,22 @@
             <div class="section-head"><h2>通告</h2><div class="hint">这里记录系统更新与重要通知</div></div>
             <div class="section-body">
               <div class="notice-card">
+                <div class="notice-title">Version 3.1 正式版 发布</div>
+                <div class="notice-date">2026-04-11 22:00</div>
+                <ul>
+                  <li>修复：预算提醒状态显示异常</li>
+                  <li>修复：旧月份负债数据读取后被重置的问题</li>
+                  <li>修复：旧流水删除时资产账户无法正确回滚的问题</li>
+                  <li>修复：教程页“重新打开首页教程弹窗”按钮行为错误</li>
+                  <li>修复：年度统计在跨币种月份下总额计算不一致的问题</li>
+                  <li>优化：MYR 基准汇率固定为 1，避免界面与逻辑不一致</li>
+                  <li>优化：JSON 导入增加结构校验、月份合法性校验与导入数量提示</li>
+                  <li>优化：自动保存增加权限检测、失败反馈与状态提示</li>
+                  <li>优化：月份数据归一化逻辑，统一处理空值、负数、旧字段与异常输入</li>
+                  <li>优化：第三轮深度加固已完成，强化数据一致性、恢复能力与运行稳定性</li>
+                </ul>
+              </div>
+              <div class="notice-card">
                 <div class="notice-title">Version 3.0 正式版 发布</div>
                 <div class="notice-date">2026-04-03 08:00</div>
                 <ul>
@@ -560,9 +576,7 @@
         <footer class="footer">
           <div class="footer-content">
             <span>© 2026 个人月度预算管理系统</span><span class="divider">|</span><span>联系方式：</span><a href="mailto:your_email@gmail.com">your_email@gmail.com</a><span class="divider">|</span>
-            <div class="version-box"><div class="version-header" onclick="toggleVersionLog()">Version 3.0 • Major Update ▼</div><div class="version-log" id="versionLog"><ul><li>Version 3.0 正式版 发布：2026-04-03 8:00</li>
-                  <li>新增：固定开支提醒系统</li>
-                  <li>新增：资产与负债占比图表</li><li>新增：流水系统（收入 / 开支记录、备注、日期与时间）</li><li>新增：分类图表、年度统计、资产负债、预算上限</li><li>新增：JSON 导出 / 导入与自动保存文件夹</li><li>新增：支出小项目名称可自定义</li><li>新增：导入自动保存 JSON 文件教程</li><li>新增：教程导航与首次进入弹窗</li></ul></div></div>
+            <div class="version-box"><div class="version-header" onclick="toggleVersionLog()">Version 3.1 正式版 ▼</div><div class="version-log" id="versionLog"><ul><li>Version 3.1 正式版 发布：2026-04-11 22:00</li><li>修复：预算提醒状态显示异常</li><li>修复：旧月份负债数据读取后被重置的问题</li><li>修复：旧流水删除时资产账户无法正确回滚的问题</li><li>修复：教程页“重新打开首页教程弹窗”按钮行为错误</li><li>修复：年度统计在跨币种月份下总额计算不一致的问题</li><li>优化：MYR 基准汇率固定为 1</li><li>优化：JSON 导入结构校验与自动保存状态反馈</li><li>优化：第三轮深度加固完成，提升数据一致性与稳定性</li></ul></div></div>
           </div>
         </footer>
       </div>
@@ -572,7 +586,7 @@
   
   <div id="tutorialModal" class="modal-backdrop" aria-hidden="true">
     <div class="modal" role="dialog" aria-modal="true" aria-labelledby="tutorialModalTitle">
-      <div class="modal-head"><h3 id="tutorialModalTitle">欢迎使用个人月度预算管理系统 3.0 正式版</h3><button class="btn-ghost" id="closeTutorialModalBtn">关闭</button></div>
+      <div class="modal-head"><h3 id="tutorialModalTitle">欢迎使用个人月度预算管理系统 3.1</h3><button class="btn-ghost" id="closeTutorialModalBtn">关闭</button></div>
       <div class="modal-body">
         <div class="tutorial-box" style="margin:0;box-shadow:none;"><h3>快速上手</h3><ol><li>选择月份后开始输入收入、汇率和支出。</li><li>主页会自动显示结余、差额、图表、预算提醒。</li><li>支出达到 80% 会黄色提醒，超过预算会红色提醒。</li><li>流水系统可把每一笔收入、开支或资产转移直接记到账目。</li></ol></div>
         <div class="tutorial-box" style="margin:14px 0 0;box-shadow:none;"><h3>JSON 备份</h3><ol><li>点击「导出JSON」保存完整数据备份。</li><li>点击「导入JSON」恢复备份资料。</li><li>也可以选择一个文件夹启用自动保存，系统会自动写入 JSON 备份。</li><li>旧版本数据会依据版本号字段自动迁移到当前版本。</li><li>为了数据安全和使用方便，建议尽量启用自动保存功能，并定期保留一份手动导出的 JSON 备份。</li><li>如果更换浏览器、清除缓存或重装系统，自动保存文件会更稳妥。</li><li>支出明细的小项目名称可以直接修改，并会随 JSON 一起保存。</li><li>流水系统可记录每一笔收入、开支或资产转移的金额、备注、日期和时间。</li><li>导入自动保存文件时，请先打开你当初选择的固定文件夹，再选中 <b>budget-backup.json</b>。</li><li>如果找不到文件，可以先检查「下载」文件夹、桌面，或者你自己设置过的自动保存文件夹。</li></ol><div class="tutorial-highlight">这份系统会把每个月的数据分开保存，切换月份不会互相覆盖。</div></div>
@@ -583,7 +597,7 @@
   <input id="importJsonInput" class="hidden-input" type="file" accept="application/json,.json" />
 
   <script>
-    const APP_VERSION = '3.0';
+    const APP_VERSION = '3.1';
     const MONTH_PREFIX = 'budget_tracker_month_v7_';
     const UI_KEY = 'budget_tracker_ui_v7';
     const THEME_KEY = 'budget_tracker_theme_v7';
@@ -677,11 +691,31 @@
     function deepClone(obj){ return typeof structuredClone === 'function' ? structuredClone(obj) : JSON.parse(JSON.stringify(obj)); }
     function money(amount){ return new Intl.NumberFormat('en-US',{style:'currency',currency:currencySelect.value,minimumFractionDigits:2,maximumFractionDigits:2}).format(Number(amount||0)); }
     function fmtMoney(amount,currencyCode){ return new Intl.NumberFormat('en-US',{style:'currency',currency:currencyCode,minimumFractionDigits:2,maximumFractionDigits:2}).format(Number(amount||0)); }
-    function getFxRate(code){ if(code==='MYR') return 1; return Number(document.getElementById(`rate_${code}`)?.value || 0); }
+    function getFxRate(code){
+      if(code==='MYR') return 1;
+      const inputRate = Number(document.getElementById(`rate_${code}`)?.value);
+      const stateRate = Number(state?.fx?.[code]);
+      if(Number.isFinite(inputRate) && inputRate > 0) return inputRate;
+      if(Number.isFinite(stateRate) && stateRate > 0) return stateRate;
+      return 0;
+    }
+    function convertStoredMonthAmountToMyr(amount,data){
+      const monthCurrency = data?.currency || 'MYR';
+      const monthFx = data?.fx || {};
+      const rate = monthCurrency === 'MYR' ? 1 : Number(monthFx[monthCurrency] || 0);
+      return Number(amount || 0) * (rate > 0 ? rate : 1);
+    }
+    function convertMyrToDisplay(amountMyr){
+      return convertCurrency(Number(amountMyr || 0), 'MYR', currencySelect.value);
+    }
     function convertCurrency(amount,from,to){ const fr=getFxRate(from); const tr=getFxRate(to); if(!fr||!tr) return 0; return Number(amount||0)*fr/tr; }
     function budgetLevel(actual,plan){ if(!plan||plan<=0) return 'none'; if(actual>plan) return 'danger'; if(actual>=plan*0.8) return 'warning'; return 'ok'; }
     function formatDateDDMMYYYY(d=new Date()){ return `${String(d.getDate()).padStart(2,'0')}-${String(d.getMonth()+1).padStart(2,'0')}-${d.getFullYear()}`; }
     function formatTime24(d=new Date()){ return `${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`; }
+    function safeNumber(value,fallback=0){ const n=Number(value); return Number.isFinite(n) ? n : fallback; }
+    function toNonNegativeNumber(value,fallback=0){ const n=safeNumber(value,fallback); return n < 0 ? 0 : n; }
+    function normalizeMonthString(month){ const s=String(month || '').trim(); return s.length===7 && s[4]==='-' && !Number.isNaN(Number(s.slice(0,4))) && !Number.isNaN(Number(s.slice(5,7))); }
+    function setAutoSaveStatus(message,kind='warn'){ const el=document.getElementById('autoSaveStatus'); if(!el) return; el.textContent=message; el.className=`autosave-status ${kind}`; }
 
     function createMonthTemplate(){
       return {
@@ -700,41 +734,55 @@
     function normalizeMonthData(data){
       const n = createMonthTemplate();
       if(data && typeof data === 'object'){
-        if(data.version) n.version = String(data.version);
-        if(data.currency) n.currency = data.currency;
-        if(data.fx){ n.fx.MYR=Number(data.fx.MYR ?? n.fx.MYR); n.fx.SGD=Number(data.fx.SGD ?? n.fx.SGD); n.fx.USD=Number(data.fx.USD ?? n.fx.USD); n.fx.CNY=Number(data.fx.CNY ?? n.fx.CNY); }
-        if(data.income){ for(const [id,val] of Object.entries(data.income)){ if(n.income[id]) n.income[id]={ plan:Number(val?.plan||0), actual:Number(val?.actual||0) }; } }
-        if(data.categories){
-          for(const [catId,items] of Object.entries(data.categories)){
-            if(!n.categories[catId]) continue;
-            for(const [itemId,val] of Object.entries(items || {})){
-              const mappedItemId = catId === 'daily' && itemId === 'cash' ? 'topup' : itemId;
-              if(!n.categories[catId][mappedItemId]) continue;
-              n.categories[catId][mappedItemId] = {
-                name: typeof val?.name === 'string' && val.name.trim() ? val.name : n.categories[catId][mappedItemId].name,
-                plan: Number(val?.plan || 0),
-                actual: Number(val?.actual || 0)
-              };
+        n.version = APP_VERSION;
+        const allowedCurrencies = ['SGD','MYR','USD','CNY'];
+        if(allowedCurrencies.includes(String(data.currency || ''))) n.currency = String(data.currency);
+        if(data.fx && typeof data.fx === 'object'){
+          n.fx.MYR = 1;
+          n.fx.SGD = toNonNegativeNumber(data.fx.SGD, n.fx.SGD);
+          n.fx.USD = toNonNegativeNumber(data.fx.USD, n.fx.USD);
+          n.fx.CNY = toNonNegativeNumber(data.fx.CNY, n.fx.CNY);
+        }
+        if(data.income && typeof data.income === 'object'){
+          for(const item of incomeDefs){
+            n.income[item.id].plan = toNonNegativeNumber(data.income[item.id]?.plan, n.income[item.id].plan);
+            n.income[item.id].actual = toNonNegativeNumber(data.income[item.id]?.actual, n.income[item.id].actual);
+          }
+        }
+        if(data.categories && typeof data.categories === 'object'){
+          for(const cat of categoryDefs){
+            for(const [itemId,label] of cat.items){
+              const src = data.categories[cat.id]?.[itemId] || (cat.id === 'daily' && itemId === 'topup' ? data.categories[cat.id]?.cash : null) || {};
+              n.categories[cat.id][itemId].name = String(src.name || label).trim() || label;
+              n.categories[cat.id][itemId].plan = toNonNegativeNumber(src.plan, 0);
+              n.categories[cat.id][itemId].actual = toNonNegativeNumber(src.actual, 0);
             }
           }
         }
-        if(data.caps){ for(const [id,val] of Object.entries(data.caps)) if(id in n.caps) n.caps[id]=Number(val||0); }
-        if(data.assets){
+        if(data.caps && typeof data.caps === 'object'){
+          for(const c of capsDefs) if(c.id in data.caps) n.caps[c.id] = toNonNegativeNumber(data.caps[c.id], 0);
+        }
+        if(data.assets && typeof data.assets === 'object'){
           const legacyToModern = { cash:'cashBalance', bank:'bankBalance' };
           for(const [id,val] of Object.entries(data.assets)){
             const mapped = legacyToModern[id] || id;
-            if(mapped in n.assets) n.assets[mapped] = Number(val || 0);
+            if(mapped in n.assets) n.assets[mapped] = toNonNegativeNumber(val, 0);
+          }
+        }
+        if(data.liabilities && typeof data.liabilities === 'object'){
+          for(const [id,val] of Object.entries(data.liabilities)){
+            if(id in n.liabilities) n.liabilities[id] = toNonNegativeNumber(val, 0);
           }
         }
         if(Array.isArray(data.reminders)){
           n.reminders = data.reminders.map(r => ({
             id:String(r?.id || `${Date.now()}_${Math.random().toString(36).slice(2,8)}`),
-            name:String(r?.name || ''),
-            catId:String(r?.catId || 'housing'),
-            itemId:String(r?.itemId || 'rentDeposit'),
-            amount:Number(r?.amount || 0),
+            name:String(r?.name || '').trim(),
+            catId:String(r?.catId || ''),
+            itemId:String(r?.itemId || ''),
+            amount:toNonNegativeNumber(r?.amount, 0),
             active:r?.active !== false
-          }));
+          })).filter(r => r.amount > 0 && categoryDefs.some(cat => cat.id === r.catId && cat.items.some(([itemId]) => itemId === r.itemId)));
         }
         if(Array.isArray(data.transactions)){
           n.transactions = data.transactions.map(tx => ({
@@ -742,13 +790,21 @@
             kind: tx?.kind === 'income' ? 'income' : tx?.kind === 'transfer' ? 'transfer' : 'expense',
             itemId:String(tx?.itemId || ''),
             catId:String(tx?.catId || ''),
-            amount:Number(tx?.amount || 0),
-            note:String(tx?.note || ''),
+            assetId:String(tx?.assetId || ''),
+            fromAssetId:String(tx?.fromAssetId || ''),
+            toAssetId:String(tx?.toAssetId || ''),
+            amount:toNonNegativeNumber(tx?.amount, 0),
+            note:String(tx?.note || '').trim(),
             date:String(tx?.date || ''),
             time:String(tx?.time || ''),
-            projectLabel:String(tx?.projectLabel || ''),
+            projectLabel:String(tx?.projectLabel || '').trim(),
             createdAt:String(tx?.createdAt || '')
-          }));
+          })).filter(tx => {
+            if(!(tx.amount > 0)) return false;
+            if(tx.kind === 'income') return !!tx.itemId && !!tx.assetId && incomeDefs.some(item => item.id === tx.itemId) && (tx.assetId in n.assets);
+            if(tx.kind === 'expense') return !!tx.catId && !!tx.itemId && !!tx.assetId && !!n.categories[tx.catId]?.[tx.itemId] && (tx.assetId in n.assets);
+            return !!tx.fromAssetId && !!tx.toAssetId && tx.fromAssetId !== tx.toAssetId && (tx.fromAssetId in n.assets) && (tx.toAssetId in n.assets);
+          });
         }
       }
       return n;
@@ -829,7 +885,7 @@
     function fillFormFromState(){
       monthPicker.value=currentMonth; monthPickerTop.value=currentMonth; currencySelect.value=state.currency || 'SGD';
       incomeDefs.forEach(item=>{ document.getElementById(`income_${item.id}_plan`).value=state.income[item.id].plan; document.getElementById(`income_${item.id}_actual`).value=state.income[item.id].actual; });
-      document.getElementById('rate_MYR').value=state.fx.MYR; document.getElementById('rate_SGD').value=state.fx.SGD; document.getElementById('rate_USD').value=state.fx.USD; document.getElementById('rate_CNY').value=state.fx.CNY;
+      document.getElementById('rate_MYR').value=1; document.getElementById('rate_SGD').value=state.fx.SGD; document.getElementById('rate_USD').value=state.fx.USD; document.getElementById('rate_CNY').value=state.fx.CNY;
       categoryDefs.forEach(cat=>{ cat.items.forEach(([itemId,label])=>{ const n=document.getElementById(`${cat.id}_${itemId}_name`); const p=document.getElementById(`${cat.id}_${itemId}_plan`); const a=document.getElementById(`${cat.id}_${itemId}_actual`); if(n) n.value=state.categories[cat.id][itemId].name || label; if(p) p.value=state.categories[cat.id][itemId].plan; if(a) a.value=state.categories[cat.id][itemId].actual; }); });
       capsDefs.forEach(cat=>{ const el=document.getElementById(`cap_${cat.id}`); if(el) el.value=state.caps[cat.id] || 0; });
       Object.entries(state.assets).forEach(([k,v])=>{ const el=document.getElementById(`asset_${k}`); if(el) el.value=v; });
@@ -842,7 +898,8 @@
     function renderMonthList(){ const months=getAllSavedMonths(); monthListEl.innerHTML=''; if(!months.length){ monthListEl.innerHTML='<div class="sidebar-note">暂无月份记录</div>'; return; } months.forEach(m=>{ const btn=document.createElement('button'); btn.className='month-chip'+(m===currentMonth?' active':''); btn.textContent=m; btn.dataset.month=m; btn.addEventListener('click',()=>handleMonthSelection(m)); monthListEl.appendChild(btn); }); }
 
     function getAssetLabel(assetId){
-      return assetDefs.assets.find(([id]) => id === assetId)?.[1] || assetId;
+      const found = assetDefs.assets.find(entry => Array.isArray(entry) && entry[0] === assetId);
+      return found ? found[1] : assetId;
     }
 
     function renderTransactionTargets(){
@@ -855,55 +912,66 @@
       const txAssetGroup = document.getElementById('txAssetGroup');
       const txTransferGroup = document.getElementById('txTransferGroup');
       const txTransferGroupTo = document.getElementById('txTransferGroupTo');
-      if (!txTypeEl || !txTargetEl || !txAssetEl || !txFromAssetEl || !txToAssetEl) return;
+      if(!txTypeEl || !txTargetEl || !txAssetEl || !txFromAssetEl || !txToAssetEl) return;
 
       const type = txTypeEl.value || 'expense';
-      const prevTarget = txTargetEl.value;
-      const prevAsset = txAssetEl.value;
-      const prevFrom = txFromAssetEl.value;
-      const prevTo = txToAssetEl.value;
+      const prevTarget = txTargetEl.value || '';
+      const prevAsset = txAssetEl.value || '';
+      const prevFrom = txFromAssetEl.value || '';
+      const prevTo = txToAssetEl.value || '';
 
       txTargetEl.innerHTML = '';
-      incomeDefs.forEach(item => {
-        const opt = document.createElement('option');
-        opt.value = `income|${item.id}`;
-        opt.textContent = item.label;
-        txTargetEl.appendChild(opt);
-      });
-      categoryDefs.forEach(cat => {
-        const head = document.createElement('option');
-        head.disabled = true;
-        head.textContent = `— ${cat.title} —`;
-        txTargetEl.appendChild(head);
-        cat.items.forEach(([itemId, fallbackLabel]) => {
-          const currentName = state.categories[cat.id]?.[itemId]?.name || fallbackLabel;
+      if(type === 'income'){
+        incomeDefs.forEach(item => {
           const opt = document.createElement('option');
-          opt.value = `expense|${cat.id}|${itemId}`;
-          opt.textContent = `${cat.title} / ${currentName}`;
+          opt.value = `income|${item.id}`;
+          opt.textContent = item.label;
           txTargetEl.appendChild(opt);
         });
-      });
+      } else if(type === 'expense'){
+        categoryDefs.forEach(cat => {
+          const group = document.createElement('optgroup');
+          group.label = cat.title;
+          cat.items.forEach(([itemId, fallbackLabel]) => {
+            const opt = document.createElement('option');
+            const currentName = state?.categories?.[cat.id]?.[itemId]?.name || fallbackLabel;
+            opt.value = `expense|${cat.id}|${itemId}`;
+            opt.textContent = `${cat.title} / ${currentName}`;
+            group.appendChild(opt);
+          });
+          txTargetEl.appendChild(group);
+        });
+      }
 
-      txAssetEl.innerHTML = '';
-      txFromAssetEl.innerHTML = '';
-      txToAssetEl.innerHTML = '';
-      assetDefs.assets.forEach(([id, label]) => {
-        const a1 = document.createElement('option'); a1.value = id; a1.textContent = label; txAssetEl.appendChild(a1);
-        const a2 = document.createElement('option'); a2.value = id; a2.textContent = label; txFromAssetEl.appendChild(a2);
-        const a3 = document.createElement('option'); a3.value = id; a3.textContent = label; txToAssetEl.appendChild(a3);
-      });
+      const rebuildAssetSelect = (selectEl, keepValue='') => {
+        if(!selectEl) return;
+        selectEl.innerHTML = '';
+        assetDefs.assets.forEach(entry => {
+          if(!Array.isArray(entry) || entry.length < 2) return;
+          const [id, label] = entry;
+          const opt = document.createElement('option');
+          opt.value = id;
+          opt.textContent = label;
+          selectEl.appendChild(opt);
+        });
+        const validValues = [...selectEl.options].map(o => o.value);
+        if(keepValue && validValues.includes(keepValue)) selectEl.value = keepValue;
+        else if(validValues.length) selectEl.value = validValues[0];
+      };
 
-      const defaultTarget = type === 'income' ? `income|${incomeDefs[0].id}` : `expense|${categoryDefs[0].id}|${categoryDefs[0].items[0][0]}`;
-      txTargetEl.value = prevTarget && prevTarget.startsWith(type) ? prevTarget : defaultTarget;
-      if (prevAsset && [...txAssetEl.options].some(o => o.value === prevAsset)) txAssetEl.value = prevAsset;
-      if (prevFrom && [...txFromAssetEl.options].some(o => o.value === prevFrom)) txFromAssetEl.value = prevFrom;
-      if (prevTo && [...txToAssetEl.options].some(o => o.value === prevTo)) txToAssetEl.value = prevTo;
+      rebuildAssetSelect(txAssetEl, prevAsset);
+      rebuildAssetSelect(txFromAssetEl, prevFrom);
+      rebuildAssetSelect(txToAssetEl, prevTo);
+
+      const targetValues = [...txTargetEl.querySelectorAll('option')].map(o => o.value).filter(Boolean);
+      if(prevTarget && targetValues.includes(prevTarget)) txTargetEl.value = prevTarget;
+      else if(targetValues.length) txTargetEl.value = targetValues[0];
 
       const isTransfer = type === 'transfer';
-      if (txTargetGroup) txTargetGroup.style.display = isTransfer ? 'none' : 'flex';
-      if (txAssetGroup) txAssetGroup.style.display = isTransfer ? 'none' : 'flex';
-      if (txTransferGroup) txTransferGroup.style.display = isTransfer ? 'flex' : 'none';
-      if (txTransferGroupTo) txTransferGroupTo.style.display = isTransfer ? 'flex' : 'none';
+      if(txTargetGroup) txTargetGroup.style.display = isTransfer ? 'none' : '';
+      if(txAssetGroup) txAssetGroup.style.display = isTransfer ? 'none' : '';
+      if(txTransferGroup) txTransferGroup.style.display = isTransfer ? '' : 'none';
+      if(txTransferGroupTo) txTransferGroupTo.style.display = isTransfer ? '' : 'none';
     }
 
     function applyTransactionDelta(tx, sign){
@@ -1017,12 +1085,12 @@
         tx.assetId = assetId;
         if (type === 'income') {
           const [, itemId] = target.split('|');
-          if (!state.income[itemId]) return;
+          if (!state.income[itemId]) { alert('收入项目无效。'); return; }
           tx.itemId = itemId;
           tx.projectLabel = incomeDefs.find(i => i.id === itemId)?.label || itemId;
         } else {
           const [, catId, itemId] = target.split('|');
-          if (!state.categories[catId]?.[itemId]) return;
+          if (!state.categories[catId]?.[itemId]) { alert('支出项目无效。'); return; }
           tx.catId = catId;
           tx.itemId = itemId;
           tx.projectLabel = `${categoryDefs.find(c => c.id === catId)?.title || catId} / ${state.categories[catId][itemId].name || itemId}`;
@@ -1053,14 +1121,15 @@
 
     function readFormIntoState(){
       state.version=APP_VERSION;
-      state.currency=currencySelect.value;
-      state.fx={ MYR:Number(document.getElementById('rate_MYR').value||1), SGD:Number(document.getElementById('rate_SGD').value||0), USD:Number(document.getElementById('rate_USD').value||0), CNY:Number(document.getElementById('rate_CNY').value||0) };
-      incomeDefs.forEach(item=>{ state.income[item.id]={ plan:Number(document.getElementById(`income_${item.id}_plan`).value||0), actual:Number(document.getElementById(`income_${item.id}_actual`).value||0) }; });
-      categoryDefs.forEach(cat=>{ state.categories[cat.id]=state.categories[cat.id] || {}; cat.items.forEach(([itemId,label])=>{ state.categories[cat.id][itemId]={ name:String(document.getElementById(`${cat.id}_${itemId}_name`)?.value || label).trim() || label, plan:Number(document.getElementById(`${cat.id}_${itemId}_plan`).value||0), actual:Number(document.getElementById(`${cat.id}_${itemId}_actual`).value||0) }; }); });
-      capsDefs.forEach(cat=>{ state.caps[cat.id]=Number(document.getElementById(`cap_${cat.id}`)?.value||0); });
-      assetDefs.assets.forEach(([id])=>{ state.assets[id]=Number(document.getElementById(`asset_${id}`)?.value||0); });
-      assetDefs.liabilities.forEach(([id])=>{ state.liabilities[id]=Number(document.getElementById(`liability_${id}`)?.value||0); });
+      state.currency=['SGD','MYR','USD','CNY'].includes(currencySelect.value) ? currencySelect.value : 'SGD';
+      state.fx={ MYR:1, SGD:toNonNegativeNumber(document.getElementById('rate_SGD').value,0), USD:toNonNegativeNumber(document.getElementById('rate_USD').value,0), CNY:toNonNegativeNumber(document.getElementById('rate_CNY').value,0) };
+      incomeDefs.forEach(item=>{ state.income[item.id]={ plan:toNonNegativeNumber(document.getElementById(`income_${item.id}_plan`).value,0), actual:toNonNegativeNumber(document.getElementById(`income_${item.id}_actual`).value,0) }; });
+      categoryDefs.forEach(cat=>{ state.categories[cat.id]=state.categories[cat.id] || {}; cat.items.forEach(([itemId,label])=>{ state.categories[cat.id][itemId]={ name:String(document.getElementById(`${cat.id}_${itemId}_name`)?.value || label).trim() || label, plan:toNonNegativeNumber(document.getElementById(`${cat.id}_${itemId}_plan`).value,0), actual:toNonNegativeNumber(document.getElementById(`${cat.id}_${itemId}_actual`).value,0) }; }); });
+      capsDefs.forEach(cat=>{ state.caps[cat.id]=toNonNegativeNumber(document.getElementById(`cap_${cat.id}`)?.value,0); });
+      assetDefs.assets.forEach(([id])=>{ state.assets[id]=toNonNegativeNumber(document.getElementById(`asset_${id}`)?.value,0); });
+      assetDefs.liabilities.forEach(([id])=>{ state.liabilities[id]=toNonNegativeNumber(document.getElementById(`liability_${id}`)?.value,0); });
       state.transactions=Array.isArray(state.transactions)?state.transactions:[];
+      state.reminders=Array.isArray(state.reminders)?state.reminders:[];
     }
     function getCategoryTotals(){ const totals={}; categoryDefs.forEach(cat=>{ let plan=0,actual=0; cat.items.forEach(([itemId])=>{ plan+=Number(state.categories[cat.id]?.[itemId]?.plan || 0); actual+=Number(state.categories[cat.id]?.[itemId]?.actual || 0); }); totals[cat.id]={ plan, actual, diff:actual-plan }; }); return totals; }
 
@@ -1130,15 +1199,58 @@
       const spentTotal=Object.values(totals).reduce((s,x)=>s+x.actual,0); const capTotal=Object.values(state.caps).reduce((s,x)=>s+Number(x||0),0); document.getElementById('capsTotalView').textContent=money(capTotal); document.getElementById('capsSpentView').textContent=money(spentTotal); document.getElementById('capsOverCountView').textContent=String(overCount); document.getElementById('capsWarnCountView').textContent=String(warnCount);
     }
     function renderAnnualStats(){
-      const year=Number(annualYear.value || getCurrentYear()); const months=getAllSavedMonths().filter(m=>m.startsWith(String(year))); const table=document.getElementById('annualTable'); table.innerHTML=''; let yearlyIncome=0,yearlyExpense=0,highestExpense=0,highestMonth='-'; const overspentTotal=Object.fromEntries(categoryDefs.map(c=>[c.id,0]));
-      months.forEach(month=>{ const data=loadStoredMonth(month) || createMonthTemplate(); let actualIncome=0,actualExpense=0,overCount=0; incomeDefs.forEach(item=>{ actualIncome+=Number(data.income[item.id]?.actual || 0); }); categoryDefs.forEach(cat=>{ let catPlan=0,catActual=0; cat.items.forEach(([itemId])=>{ catPlan+=Number(data.categories[cat.id]?.[itemId]?.plan || 0); catActual+=Number(data.categories[cat.id]?.[itemId]?.actual || 0); }); if(catActual>catPlan){ overCount++; overspentTotal[cat.id]+=(catActual-catPlan); } actualExpense+=catActual; }); const balance=actualIncome-actualExpense; yearlyIncome+=actualIncome; yearlyExpense+=actualExpense; if(actualExpense>highestExpense){ highestExpense=actualExpense; highestMonth=month; } const tr=document.createElement('tr'); tr.innerHTML=`<td>${month}</td><td>${fmtMoney(actualIncome,data.currency || currencySelect.value)}</td><td>${fmtMoney(actualExpense,data.currency || currencySelect.value)}</td><td>${fmtMoney(balance,data.currency || currencySelect.value)}</td><td>${overCount}</td>`; table.appendChild(tr); });
-      document.getElementById('annualIncomeTotal').textContent=money(yearlyIncome); document.getElementById('annualExpenseTotal').textContent=money(yearlyExpense); document.getElementById('annualBalanceTotal').textContent=money(yearlyIncome-yearlyExpense); document.getElementById('annualHighestExpenseAmount').textContent=money(highestExpense); document.getElementById('annualMonthCount').value=String(months.length); document.getElementById('annualHighestMonth').value=highestMonth; const mostOverspent=Object.entries(overspentTotal).sort((a,b)=>b[1]-a[1])[0]; document.getElementById('annualMostOverspent').value=mostOverspent ? `${categoryDefs.find(c=>c.id===mostOverspent[0])?.title || mostOverspent[0]}（超支 ${money(mostOverspent[1])}）` : '-';
+      const year=Number(annualYear.value || getCurrentYear());
+      const months=getAllSavedMonths().filter(m=>m.startsWith(String(year)));
+      const table=document.getElementById('annualTable');
+      table.innerHTML='';
+      let yearlyIncomeMyr=0,yearlyExpenseMyr=0,highestExpenseMyr=0,highestMonth='-';
+      const overspentTotalMyr=Object.fromEntries(categoryDefs.map(c=>[c.id,0]));
+
+      months.forEach(month=>{
+        const data=loadStoredMonth(month) || createMonthTemplate();
+        let actualIncome=0,actualExpense=0,overCount=0;
+        incomeDefs.forEach(item=>{ actualIncome+=Number(data.income[item.id]?.actual || 0); });
+        categoryDefs.forEach(cat=>{
+          let catPlan=0,catActual=0;
+          cat.items.forEach(([itemId])=>{
+            catPlan+=Number(data.categories[cat.id]?.[itemId]?.plan || 0);
+            catActual+=Number(data.categories[cat.id]?.[itemId]?.actual || 0);
+          });
+          if(catActual>catPlan){
+            overCount++;
+            overspentTotalMyr[cat.id]+=convertStoredMonthAmountToMyr(catActual-catPlan,data);
+          }
+          actualExpense+=catActual;
+        });
+
+        const actualIncomeMyr=convertStoredMonthAmountToMyr(actualIncome,data);
+        const actualExpenseMyr=convertStoredMonthAmountToMyr(actualExpense,data);
+        const balanceMyr=actualIncomeMyr-actualExpenseMyr;
+
+        yearlyIncomeMyr+=actualIncomeMyr;
+        yearlyExpenseMyr+=actualExpenseMyr;
+        if(actualExpenseMyr>highestExpenseMyr){
+          highestExpenseMyr=actualExpenseMyr;
+          highestMonth=month;
+        }
+
+        const tr=document.createElement('tr');
+        tr.innerHTML=`<td>${month}</td><td>${money(convertMyrToDisplay(actualIncomeMyr))}</td><td>${money(convertMyrToDisplay(actualExpenseMyr))}</td><td>${money(convertMyrToDisplay(balanceMyr))}</td><td>${overCount}</td>`;
+        table.appendChild(tr);
+      });
+
+      const mostOverspent=Object.entries(overspentTotalMyr).sort((a,b)=>b[1]-a[1])[0];
+      document.getElementById('annualIncomeTotal').textContent=money(convertMyrToDisplay(yearlyIncomeMyr));
+      document.getElementById('annualExpenseTotal').textContent=money(convertMyrToDisplay(yearlyExpenseMyr));
+      document.getElementById('annualBalanceTotal').textContent=money(convertMyrToDisplay(yearlyIncomeMyr-yearlyExpenseMyr));
+      document.getElementById('annualHighestExpenseAmount').textContent=money(convertMyrToDisplay(highestExpenseMyr));
+      document.getElementById('annualMonthCount').value=String(months.length);
+      document.getElementById('annualHighestMonth').value=highestMonth;
+      document.getElementById('annualMostOverspent').value=mostOverspent && mostOverspent[1] > 0 ? `${categoryDefs.find(c=>c.id===mostOverspent[0])?.title || mostOverspent[0]}（超支 ${money(convertMyrToDisplay(mostOverspent[1]))}）` : '-';
     }
     function renderAssetsLiabilities(){ const assetsTotal=Object.values(state.assets).reduce((s,v)=>s+Number(v||0),0); const liabilitiesTotal=Object.values(state.liabilities).reduce((s,v)=>s+Number(v||0),0); const netAssets=assetsTotal-liabilitiesTotal; const debtRatio=assetsTotal>0 ? liabilitiesTotal/assetsTotal : 0; document.getElementById('assetsTotalView').value=money(assetsTotal); document.getElementById('liabilitiesTotalView').value=money(liabilitiesTotal); document.getElementById('netAssetsView').value=money(netAssets); document.getElementById('debtRatioView').value=assetsTotal>0 ? `${Math.round(debtRatio*100)}%` : '—'; }
     function renderCaps(){ const totals=getCategoryTotals(); let capTotal=0,spentTotal=0,overCount=0,warnCount=0; capsDefs.forEach(cat=>{ const cap=Number(state.caps[cat.id]||0); const spent=Number(totals[cat.id]?.actual || 0); const level=budgetLevel(spent,cap); capTotal+=cap; spentTotal+=spent; if(level==='danger') overCount++; if(level==='warning') warnCount++; const status=document.getElementById(`capStatus_${cat.id}`); const rate=cap>0 ? spent/cap : 0; const spentCell=document.getElementById(`capSpent_${cat.id}`); const rateCell=document.getElementById(`capRate_${cat.id}`); const capInput=document.getElementById(`cap_${cat.id}`); if(spentCell){ spentCell.textContent=money(spent); spentCell.className=''; if(level==='warning') spentCell.classList.add('cell-warning'); if(level==='danger') spentCell.classList.add('cell-danger'); } if(rateCell){ rateCell.textContent=cap>0 ? `${Math.round(rate*100)}%` : '—'; rateCell.className=''; if(level==='warning') rateCell.classList.add('cell-warning'); if(level==='danger') rateCell.classList.add('cell-danger'); } if(status){ status.textContent=level==='danger'?'超支':level==='warning'?'80% 警告':'正常'; status.className=''; if(level==='warning') status.classList.add('cell-warning'); if(level==='danger') status.classList.add('cell-danger'); } if(capInput){ capInput.classList.remove('input-warning','input-danger'); if(level==='warning') capInput.classList.add('input-warning'); if(level==='danger') capInput.classList.add('input-danger'); } }); document.getElementById('capsTotalView').textContent=money(capTotal); document.getElementById('capsSpentView').textContent=money(spentTotal); document.getElementById('capsOverCountView').textContent=String(overCount); document.getElementById('capsWarnCountView').textContent=String(warnCount); }
-    function updateHomeStatus(){ document.getElementById('autoSaveHomeState').textContent=autoSaveEnabled?'开启':'关闭'; document.getElementById('monthHomeState').textContent=currentMonth || '-'; const totals=getCategoryTotals(); const planExpense=Object.values(totals).reduce((s,x)=>s+x.plan,0); const actualExpense=Object.values(totals).reduce((s,x)=>s+x.actual,0); document.getElementById('warningHomeState').textContent=planExpense>0 && actualExpense>planExpense ? '超支风险' : (planExpense>0 && actualExpense/planExpense>=0.8 ? '接近上限' : '正常'); const autoSaveStatus=document.getElementById('autoSaveStatus'); if(!autoSaveEnabled){ autoSaveStatus.textContent='自动保存未启用'; autoSaveStatus.className='autosave-status warn'; } else if(!autoSaveFolderHandle){ autoSaveStatus.textContent='自动保存已开启，但未选择文件夹'; autoSaveStatus.className='autosave-status warn'; } else { autoSaveStatus.textContent='自动保存已开启，已选择固定文件夹'; autoSaveStatus.className='autosave-status good'; } document.querySelectorAll('[data-action="toggle-autosave"]').forEach(btn=>btn.textContent=`自动保存：${autoSaveEnabled ? '开启' : '关闭'}`); }
-
-    function renderTransactionPage(){ renderTransactionTargets(); renderTransactionSummary(); renderTransactionList(); }
+    function updateHomeStatus(){ document.getElementById('autoSaveHomeState').textContent=autoSaveEnabled?'开启':'关闭'; document.getElementById('monthHomeState').textContent=currentMonth || '-'; const totals=getCategoryTotals(); const planExpense=Object.values(totals).reduce((s,x)=>s+x.plan,0); const actualExpense=Object.values(totals).reduce((s,x)=>s+x.actual,0); document.getElementById('warningHomeState').textContent=planExpense>0 && actualExpense>planExpense ? '超支风险' : (planExpense>0 && actualExpense/planExpense>=0.8 ? '接近上限' : '正常'); const statusText=document.getElementById('autoSaveStatus')?.textContent || ''; if(!autoSaveEnabled){ setAutoSaveStatus('自动保存未启用', 'warn'); } else if(!autoSaveFolderHandle){ setAutoSaveStatus('自动保存已开启，但未选择文件夹', 'warn'); } else if(!/成功|失败|权限/.test(statusText)){ setAutoSaveStatus('自动保存已开启，已选择固定文件夹', 'good'); } document.querySelectorAll('[data-action="toggle-autosave"]').forEach(btn=>btn.textContent=`自动保存：${autoSaveEnabled ? '开启' : '关闭'}`); }
 
     function getReminderTargetLabel(catId, itemId){
       const cat = categoryDefs.find(c => c.id === catId);
@@ -1148,6 +1260,7 @@
 
     function buildReminderTargets(){
       if (!reminderNewTarget) return;
+      const previousValue = reminderNewTarget.value;
       reminderNewTarget.innerHTML = '';
       categoryDefs.forEach(cat => {
         const group = document.createElement('optgroup');
@@ -1160,10 +1273,12 @@
         });
         reminderNewTarget.appendChild(group);
       });
-      if (state?.reminders?.length) {
-        const first = state.reminders[0];
-        const wanted = `${first.catId}|${first.itemId}`;
-        if ([...reminderNewTarget.options].some(o => o.value === wanted)) reminderNewTarget.value = wanted;
+
+      const allValues = [...reminderNewTarget.querySelectorAll('option')].map(o => o.value).filter(Boolean);
+      if (previousValue && allValues.includes(previousValue)) {
+        reminderNewTarget.value = previousValue;
+      } else if (allValues.length) {
+        reminderNewTarget.value = allValues[0];
       }
     }
 
@@ -1261,15 +1376,15 @@
     async function idbSetHandle(handle){ const db=await openDb(); return new Promise((resolve,reject)=>{ const tx=db.transaction(IDB_STORE,'readwrite'); tx.objectStore(IDB_STORE).put(handle,IDB_KEY); tx.oncomplete=()=>resolve(); tx.onerror=()=>reject(tx.error); }); }
     async function idbGetHandle(){ try{ const db=await openDb(); return await new Promise((resolve,reject)=>{ const tx=db.transaction(IDB_STORE,'readonly'); const req=tx.objectStore(IDB_STORE).get(IDB_KEY); req.onsuccess=()=>resolve(req.result || null); req.onerror=()=>reject(req.error); }); } catch { return null; } }
     async function ensureFolderPermission(handle){ if(!handle) return false; try{ if(typeof handle.queryPermission==='function'){ let perm=await handle.queryPermission({mode:'readwrite'}); if(perm==='granted') return true; if(typeof handle.requestPermission==='function') perm=await handle.requestPermission({mode:'readwrite'}); return perm==='granted'; } }catch{} return false; }
-    async function autoSaveBackupToFolder(){ if(!autoSaveEnabled || !autoSaveFolderHandle) return; if(!(await ensureFolderPermission(autoSaveFolderHandle))) return; try{ const fh=await autoSaveFolderHandle.getFileHandle('budget-backup.json',{create:true}); const writable=await fh.createWritable(); await writable.write(JSON.stringify(getBackupData(),null,2)); await writable.close(); } catch(err){ console.warn('自动保存失败',err); } }
+    async function autoSaveBackupToFolder(){ if(!autoSaveEnabled) return false; if(!autoSaveFolderHandle){ setAutoSaveStatus('自动保存已开启，但未选择文件夹', 'warn'); return false; } if(!(await ensureFolderPermission(autoSaveFolderHandle))){ setAutoSaveStatus('自动保存权限未授予', 'bad'); return false; } try{ const fh=await autoSaveFolderHandle.getFileHandle('budget-backup.json',{create:true}); const writable=await fh.createWritable(); await writable.write(JSON.stringify(getBackupData(),null,2)); await writable.close(); setAutoSaveStatus(`自动保存成功：${formatTime24(new Date())}`, 'good'); return true; } catch(err){ console.warn('自动保存失败',err); setAutoSaveStatus('自动保存失败，请重新选择文件夹', 'bad'); return false; } }
     function scheduleAutoSave(){ if(!autoSaveEnabled) return; clearTimeout(autoSaveTimer); autoSaveTimer=setTimeout(()=>{ autoSaveBackupToFolder(); },700); }
-    function importJSONFile(file){ const reader=new FileReader(); reader.onload=()=>{ try{ const parsed=JSON.parse(String(reader.result || '{}')); const ok=confirm('导入会覆盖当前本机的月份数据、主题与设置，确定继续吗？'); if(!ok) return; clearAllMonthData(); if(parsed.months && typeof parsed.months === 'object'){ for(const [month,data] of Object.entries(parsed.months)) localStorage.setItem(monthKey(month), JSON.stringify(normalizeMonthData(data))); } else if(parsed.currentMonth && parsed.data){ localStorage.setItem(monthKey(parsed.currentMonth), JSON.stringify(normalizeMonthData(parsed.data))); } else if(parsed.currency || parsed.categories){ localStorage.setItem(monthKey(parsed.currentMonth || currentMonth), JSON.stringify(normalizeMonthData(parsed))); } if(parsed.ui) saveUIState(parsed.ui); if(parsed.theme) saveThemeState(parsed.theme); if(parsed.tutorialSeen) localStorage.setItem(TUTORIAL_KEY, parsed.tutorialSeen); currentMonth = parsed.currentMonth || parsed.ui?.lastMonth || getCurrentMonth(); state = loadOrCreateMonth(currentMonth); applySavedTheme(); applyStateToUI(); updateHomeStatus(); alert('JSON 导入完成。'); } catch { alert('JSON 读取失败，请确认文件格式正确。'); } }; reader.readAsText(file,'utf-8'); }
-    async function chooseAutoSaveFolder(){ if(!window.showDirectoryPicker){ alert('当前浏览器不支持选择文件夹自动保存，请使用 Chrome 或 Edge 的 HTTPS / localhost 环境。'); return; } try{ const handle=await window.showDirectoryPicker({ mode:'readwrite' }); autoSaveFolderHandle=handle; await idbSetHandle(handle); updateHomeStatus(); await autoSaveBackupToFolder(); alert('已选择自动保存文件夹。'); } catch(err){ console.warn(err); } }
-    function collectCurrentPageData(){ saveUIState({ lastMonth: currentMonth }); saveMonth(currentMonth, state); }
+    function importJSONFile(file){ if(!file) return; const reader=new FileReader(); reader.onload=()=>{ try{ const parsed=JSON.parse(String(reader.result || '{}')); if(!parsed || typeof parsed !== 'object') throw new Error('invalid json'); const ok=confirm('导入会覆盖当前本机的月份数据、主题与设置，确定继续吗？'); if(!ok) return; clearAllMonthData(); let importedMonths=0; if(parsed.months && typeof parsed.months === 'object'){ for(const [month,data] of Object.entries(parsed.months)){ if(!normalizeMonthString(month)) continue; localStorage.setItem(monthKey(month), JSON.stringify(normalizeMonthData(data))); importedMonths++; } } else if(parsed.currentMonth && parsed.data){ const safeMonth = normalizeMonthString(parsed.currentMonth) ? parsed.currentMonth : getCurrentMonth(); localStorage.setItem(monthKey(safeMonth), JSON.stringify(normalizeMonthData(parsed.data))); importedMonths++; } else if(parsed.currency || parsed.categories){ const safeMonth = normalizeMonthString(parsed.currentMonth || currentMonth) ? (parsed.currentMonth || currentMonth) : getCurrentMonth(); localStorage.setItem(monthKey(safeMonth), JSON.stringify(normalizeMonthData(parsed))); importedMonths++; } if(!importedMonths) throw new Error('no month data'); if(parsed.ui && typeof parsed.ui === 'object') saveUIState(parsed.ui); if(parsed.theme && typeof parsed.theme === 'object') saveThemeState(parsed.theme); if(typeof parsed.tutorialSeen === 'string') localStorage.setItem(TUTORIAL_KEY, parsed.tutorialSeen); const savedMonths=getAllSavedMonths(); const preferredMonth=(normalizeMonthString(parsed.currentMonth) ? parsed.currentMonth : '') || (normalizeMonthString(parsed.ui?.lastMonth) ? parsed.ui.lastMonth : '') || savedMonths[savedMonths.length-1] || getCurrentMonth(); currentMonth = savedMonths.includes(preferredMonth) ? preferredMonth : (savedMonths[savedMonths.length-1] || getCurrentMonth()); state = loadOrCreateMonth(currentMonth); applySavedTheme(); applyStateToUI(); updateHomeStatus(); scheduleAutoSave(); alert(`JSON 导入完成，共导入 ${importedMonths} 个月份。`); } catch(err){ console.warn(err); alert('JSON 读取失败，请确认文件格式正确。'); } }; reader.readAsText(file,'utf-8'); }
+    async function chooseAutoSaveFolder(){ if(!window.showDirectoryPicker){ alert('当前浏览器不支持选择文件夹自动保存，请使用 Chrome 或 Edge 的 HTTPS / localhost 环境。'); return; } try{ const handle=await window.showDirectoryPicker({ mode:'readwrite' }); if(!(await ensureFolderPermission(handle))){ setAutoSaveStatus('自动保存权限未授予', 'bad'); return; } autoSaveFolderHandle=handle; await idbSetHandle(handle); updateHomeStatus(); const ok=await autoSaveBackupToFolder(); alert(ok ? '已选择自动保存文件夹。' : '已选择文件夹，但首次自动保存失败。'); } catch(err){ console.warn(err); setAutoSaveStatus('自动保存文件夹未选择', 'warn'); } }
+    function collectCurrentPageData(){ saveUIState({ lastMonth: currentMonth }); state = normalizeMonthData(state); saveMonth(currentMonth, state); renderMonthList(); updateHomeStatus(); scheduleAutoSave(); }
     function clearAllMonthsAndReload(){ clearAllMonthData(); state=createMonthTemplate(); applyStateToUI(); renderCharts(); renderAnnualStats(); renderAssetsLiabilities(); renderCaps(); renderTransactionPage(); }
 
     function applyStateToUI(){ fillFormFromState(); calculateAndRender(); renderMonthList(); renderTransactionPage(); }
-    function handleMonthSelection(month){ if(!month || month===currentMonth) return; saveMonth(currentMonth,state); currentMonth=month; state=loadOrCreateMonth(month); applyStateToUI(); saveUIState({ lastMonth: currentMonth }); }
+    function handleMonthSelection(month){ if(!normalizeMonthString(month) || month===currentMonth) return; state = normalizeMonthData(state); saveMonth(currentMonth,state); currentMonth=month; state=loadOrCreateMonth(month); applyStateToUI(); saveUIState({ lastMonth: currentMonth }); }
     function handleAnyDataInput(){ calculateAndRender(); }
     function applySavedTheme(){ const theme=loadThemeState(); applyTheme(theme); if(!theme.avatarImage){ const next={ ...theme, avatarImage:DEFAULT_AVATAR }; saveThemeState(next); applyTheme(next); } }
     function toggleVersionLog(){ const log=document.getElementById('versionLog'); if(!log) return; log.style.display = log.style.display === 'block' ? 'none' : 'block'; }
@@ -1290,7 +1405,7 @@
       const planBalance=planIncome-planExpense; const actualBalance=actualIncome-actualExpense; const incomeDiff=actualIncome-planIncome; const expenseDiff=actualExpense-planExpense; const balanceDiff=actualBalance-planBalance;
       document.getElementById('planIncomeView').textContent=money(planIncome); document.getElementById('planExpenseView').textContent=money(planExpense); document.getElementById('planBalanceView').textContent=money(planBalance); document.getElementById('actualIncomeView').textContent=money(actualIncome); document.getElementById('actualExpenseView').textContent=money(actualExpense); document.getElementById('actualBalanceView').textContent=money(actualBalance); document.getElementById('incomeDiffView').textContent=money(incomeDiff); document.getElementById('expenseDiffView').textContent=money(expenseDiff); document.getElementById('balanceDiffView').textContent=money(balanceDiff);
       document.getElementById('planBalanceView').className='value ' + (planBalance>=0 ? 'good' : 'bad'); document.getElementById('actualBalanceView').className='value ' + (actualBalance>=0 ? 'good' : 'bad'); document.getElementById('incomeDiffView').className='value ' + (incomeDiff>0 ? 'bad' : incomeDiff<0 ? 'good' : 'warn'); document.getElementById('expenseDiffView').className='value ' + (expenseDiff>0 ? 'bad' : expenseDiff<0 ? 'good' : 'warn'); document.getElementById('balanceDiffView').className='value ' + (balanceDiff>0 ? 'bad' : balanceDiff<0 ? 'good' : 'warn'); document.getElementById('actualExpenseView').className='value ' + (actualExpense>planExpense ? 'bad' : (planExpense>0 && actualExpense/planExpense>=0.8 ? 'warn' : 'good'));
-      saveMonth(currentMonth,state); saveUIState({ lastMonth: currentMonth }); updateFxRates(); updateFx(); renderMonthList(); renderWarnings(); updateHomeStatus(); renderTransactionPage(); if(document.getElementById('page-charts')?.classList.contains('active')) renderCharts(); if(document.getElementById('page-annual')?.classList.contains('active')) renderAnnualStats(); if(document.getElementById('page-assets')?.classList.contains('active')) renderAssetsLiabilities(); if(document.getElementById('page-caps')?.classList.contains('active')) renderCaps();
+      state = normalizeMonthData(state); saveMonth(currentMonth,state); saveUIState({ lastMonth: currentMonth }); updateFxRates(); updateFx(); renderMonthList(); renderWarnings(); updateHomeStatus(); renderTransactionPage(); if(document.getElementById('page-charts')?.classList.contains('active')) renderCharts(); if(document.getElementById('page-annual')?.classList.contains('active')) renderAnnualStats(); if(document.getElementById('page-assets')?.classList.contains('active')) renderAssetsLiabilities(); if(document.getElementById('page-caps')?.classList.contains('active')) renderCaps();
       renderReminders();
       scheduleAutoSave();
     }
@@ -1315,7 +1430,7 @@
       avatarInput.addEventListener('change',async()=>{ const file=avatarInput.files && avatarInput.files[0]; if(!file) return; const dataUrl=await fileToDataUrl(file); const theme=loadThemeState(); theme.avatarImage=dataUrl; saveThemeState(theme); applyTheme(theme); calculateAndRender(); });
       importJsonInput.addEventListener('change',()=>{ const file=importJsonInput.files && importJsonInput.files[0]; if(file) importJSONFile(file); importJsonInput.value=''; });
       document.addEventListener('click',(e)=>{ const btn=e.target.closest('[data-month]'); if(!btn) return; handleMonthSelection(btn.dataset.month); });
-      document.getElementById('openTutorialModalBtn').addEventListener('click',()=>setActivePage('tutorial')); document.getElementById('txType')?.addEventListener('change',()=>renderTransactionTargets()); document.getElementById('txAddBtn')?.addEventListener('click',addTransactionFromForm); document.getElementById('txList')?.addEventListener('click',(e)=>{ const del=e.target.closest('[data-tx-delete]'); if(!del) return; deleteTransaction(del.dataset.txDelete); });
+      document.getElementById('openTutorialModalBtn').addEventListener('click',()=>showTutorialModal()); document.getElementById('txType')?.addEventListener('change',()=>renderTransactionTargets()); document.getElementById('txAddBtn')?.addEventListener('click',addTransactionFromForm); document.getElementById('txList')?.addEventListener('click',(e)=>{ const del=e.target.closest('[data-tx-delete]'); if(!del) return; deleteTransaction(del.dataset.txDelete); });
       document.getElementById('reminderAddBtn')?.addEventListener('click', addReminderFromForm);
       document.getElementById('reminderList')?.addEventListener('click', (e) => {
         const t = e.target.closest('[data-reminder-toggle]');
